@@ -30,7 +30,7 @@ router.post("/update_home_information",checkLogin,async function(req,res){
     facebook_link ='${d.facebook_link}',
     whatsapp_link ='${d.whatsapp_link }',
     instagram_link ='${d.instagram_link}', 
-    linkedin_link ='${d.linkedin_link}' WHERE home_info_id= '1'`;
+    linkedin_link ='${d.linkedin_link}'`;
     var data=await exe(sql); 
     res.redirect("/admin/")
 })
