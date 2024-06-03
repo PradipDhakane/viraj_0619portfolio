@@ -1,0 +1,46 @@
+@media print {
+    .noprint {
+       visibility: hidden;
+    }
+ }
+        .body1 {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        .container1 {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container1  h1, h2, h3 {
+            color: #333;
+        }
+        .section1 {
+            margin-bottom: 20px;
+        }
+        .section1 h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        .info1, .academic1, .skills1, .certification1, .projects1, .achievements1, .personal1 {
+            margin-bottom: 20px;
+        }
+        .table1 {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table1, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }

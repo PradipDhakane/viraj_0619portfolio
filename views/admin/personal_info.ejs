@@ -1,0 +1,60 @@
+<%-include('navbar.ejs')%>
+
+<form action="/admin/update_personal_information" method="post" enctype="multipart/form-data">
+    <div class="container-fluid bg-white p-3 shadow">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="heading">Personal Information</h3>
+            </div>
+          
+            <div class="col-md-3 mb-3">
+                 Your Photo
+                <input class="form-control" type="file" accept="image/*" name="your_photo">
+         </div>
+            <div class="col-md-1">
+                <img src="/uploads/<%= personal_info.your_photo%>" width="100%" class="mt-2">  
+            </div>
+           
+            
+            <div class="col-md-4 mb-3">
+                  DOB
+                <input class="form-control" type="text"  name="your_dob" value="<%= personal_info.your_dob%>">
+            </div> 
+            
+            <div class="col-md-4 mb-3">
+                Age
+                <input class="form-control" type="number"  name="your_age" value="<%= personal_info.your_age%>">
+            </div> 
+            <div class="col-md-4 mb-3">
+             Website
+                <input class="form-control" type="text"  name="your_website" value="<%= personal_info.your_website%>">
+            </div>
+            <div class="col-md-4 mb-3">
+             Degree
+                <input class="form-control" type="text"  name="your_deg" value="<%= personal_info.your_deg%>">
+            </div>
+            <div class="col-md-4 mb-3">
+                Mobile
+                   <input class="form-control" type="text"  name="your_mobile" value="<%= personal_info.your_mobile%>">
+               </div>
+               <div class="col-md-4 mb-3">
+                Email
+                   <input class="form-control" type="text"  name="your_email" value="<%= personal_info.your_email%>">
+               </div>
+               <div class="col-md-4 mb-3">
+                City
+                   <input class="form-control" type="text"  name="your_city" value="<%= personal_info.your_city%>">
+               </div>
+               <div class="col-md-4 mb-3">
+                Country
+                   <input class="form-control" type="text"  name="your_country" value="<%= personal_info.your_country%>">
+               </div>
+            <div class="col-md-12 mb-3 text-center">
+                <button class="btn btn-primary">Update Information</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<%-include('footer.ejs')%>

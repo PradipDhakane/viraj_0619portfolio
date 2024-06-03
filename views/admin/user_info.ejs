@@ -1,0 +1,43 @@
+<%-include('navbar.ejs')%>
+
+<div class="container-fluid bg-white p-3 shadow">
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <h3 class="heading">User Information</h3>
+        </div>
+        <div class="col-md-12 col-sm-12 table-responsive">
+            <table class="table table-striped" width="100%">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Ac.</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i = 0; i < user_info.length; i++) { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td> <a href="/admin/delete_user_info/<%=user_info[i].student_info_id%>" onclick="return confirm('Are You Sure..?')"><i class="fa-solid fa-trash-can text-danger"></i></a></td>
+                            <td><%= user_info[i].name %></td>
+                            <td><%= user_info[i].email %></td>
+                            <td><%= user_info[i].subject %></td>
+                            <td><%= user_info[i].message %></td>
+                            <td><%= user_info[i].date %></td>
+                            <td><%= user_info[i].time %>:<%= user_info[i].min%></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<%-include('footer.ejs')%>
