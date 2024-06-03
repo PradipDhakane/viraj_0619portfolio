@@ -2,20 +2,17 @@ var express=require("express");
 var exe=require("./../connection");
 var url=require("url");
 var router=express.Router();
-
 router.get("/",async function(req,res){
     var home_info=await exe(`select * from home_info`);
     var obj={"home_info":home_info[0]}
     res.render("user/home.ejs",obj);
 });
-
 router.get("/about",async function(req,res){
     var home_info=await exe(`select * from home_info`);
     var personal_info=await exe(`select * from personal_info`);
     var obj={"home_info":home_info[0],"personal_info":personal_info[0]}
     res.render("user/about.ejs",obj);
 });
-
 router.get("/resume",async function(req,res){
     var home_info=await exe(`select * from home_info`);
     var obj={"home_info":home_info[0]}
@@ -62,8 +59,6 @@ router.get("/logout_admin",function (req,res){
     if(req.session.admin_id==req.session.admin_id){
         res.redirect("/admin/login");
     }
-     
-
 })
 
 module.exports=router;
