@@ -121,18 +121,25 @@
         <p style="text-align: right;">Viraj S. Dhakane</p>
     </div>
 
-    <div class="text-center mt-4">
-        <button class="btn btn-outline-success noprint" onclick="printDiv('printableArea')"><i class="fas fa-print"></i> Print</button>
-    </div>
+    
 </div> -->
-<div class="container shadow pt-4 mb-4">
+<div class="container shadow pt-4 mb-4" id="printableArea">
     <div class="row">
         <div class="col-md-12">
-            <img src="\user\images\resume\Viraj-Resume (2)_page-0001.jpg" class="h-100 w-100">
+            <img id="resumeImage" src="\user\images\resume\Viraj-Resume (2)_page-0001.jpg" class="h-100 w-100" alt="Viraj's Resume">
         </div>
     </div>
 </div>
-<%- include('footer.ejs') %>
+
+<div class="text-center mt-4 mb-4">
+    <button class="btn btn-outline-success noprint me-2" onclick="printDiv('printableArea')">
+        <i class="fas fa-print"></i> Print
+    </button>
+    <button class="btn btn-outline-primary noprint" onclick="downloadImage()">
+        <i class="fas fa-download"></i> Download
+    </button>
+</div>
+
 <script>
 function printDiv(divId) {
     var printContents = document.getElementById(divId).innerHTML;
@@ -142,4 +149,18 @@ function printDiv(divId) {
     window.print();
     document.body.innerHTML = originalContents;
 }
+
+function downloadImage() {
+    var image = document.getElementById("resumeImage");
+    var imageUrl = image.src;
+    
+    var a = document.createElement('a');
+    a.href = imageUrl;
+    a.download = 'Viraj-Resume.jpg';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
 </script>
+
+<%- include('footer.ejs') %>
