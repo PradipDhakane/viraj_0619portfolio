@@ -1,12 +1,145 @@
 <%-include('navbar.ejs') %>
 
 <section id="hero" class="d-flex align-items-center">
-    <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
-      <h1 style="font-size: 40px;"><%= home_info.your_name%></h1>
-      <h2 class="text-primary">I'm a Full Stack Web Developer</h2>
-      <a href="/about" class="btn-about">About Me</a>
-    </div>
+  <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+    <h1 style="font-size: 40px;"><%= home_info.your_name %></h1>
+    
+    <!-- Text Slider -->
+    <h2 class="text-primary text-slider">
+      <span id="typed-text"></span>
+      <span class="cursor">|</span>
+    </h2>
+
+    <a href="/about" class="btn-about mt-4">About Me</a>
+  </div>
 </section>
-<!-- End Hero -->
-	
+<style>
+  .btn-about {
+    position: relative;
+    display: inline-block;
+    padding: 12px 36px;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(135deg, #00cec9, #0984e3);
+    border: none;
+    border-radius: 50px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+  }
+
+  .btn-about::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 20%, transparent 80%);
+    animation: pulse 2s infinite;
+    z-index: 0;
+  }
+
+  .btn-about::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+    z-index: -1;
+  }
+
+  .btn-about:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(0, 206, 201, 0.8), 0 0 50px rgba(9, 132, 227, 0.4);
+  }
+
+  .btn-about:hover::after {
+    border-color: #ffffff;
+    box-shadow: 0 0 10px #00cec9, 0 0 20px #0984e3;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.2;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+  }
+</style>
+
+<style>
+  .text-slider {
+    font-size: 24px;
+    height: 30px;
+    min-height: 30px;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .cursor {
+    display: inline-block;
+    animation: blink 0.7s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const phrases = [
+    "I'm a Full Stack Web Developer",
+    "I'm a MERN Stack Developer",
+    "I'm a React.js Developer",
+    "I'm a Node.js Developer"
+  ];
+
+  let currentPhraseIndex = 0;
+  let currentCharIndex = 0;
+  const typedTextSpan = document.getElementById("typed-text");
+  const typingSpeed = 100;
+  const eraseSpeed = 50;
+  const delayBetweenPhrases = 2000;
+
+  function type() {
+    if (currentCharIndex < phrases[currentPhraseIndex].length) {
+      typedTextSpan.textContent += phrases[currentPhraseIndex].charAt(currentCharIndex);
+      currentCharIndex++;
+      setTimeout(type, typingSpeed);
+    } else {
+      setTimeout(erase, delayBetweenPhrases);
+    }
+  }
+
+  function erase() {
+    if (currentCharIndex > 0) {
+      typedTextSpan.textContent = phrases[currentPhraseIndex].substring(0, currentCharIndex - 1);
+      currentCharIndex--;
+      setTimeout(erase, eraseSpeed);
+    } else {
+      currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+      setTimeout(type, typingSpeed);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    if (phrases.length) setTimeout(type, 500);
+  });
+</script>
+
 <%-include('footer.ejs') %>
