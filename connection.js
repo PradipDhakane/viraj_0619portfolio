@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASSWORD,
-    database: process.env.DATABASE,
+    database: process.env.DATABASE
 });
 connection.connect(function (error) {
     if (error) {
@@ -16,4 +16,4 @@ connection.connect(function (error) {
     }
 });
 var exe = util.promisify(connection.query).bind(connection);
-module.exports  =  exe;
+module.exports= exe;
